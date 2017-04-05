@@ -1,0 +1,28 @@
+// Inherits from layout 
+extend layout
+// Then we produce a form that triggers /actor once
+// the user hits Submit
+block navbarcontent
+    +nav_item("/","active") Sample Work
+    +nav_item("/yourwork", "active") Your Work
+    +nav_item("/") Reference
+block content
+  form(method="get", action="/yourwork_1")
+  p
+    table
+      - for (var inx = 0; inx < results.length; inx++)
+        tr
+          td=results[inx].member+" "
+          td &nbsp;
+          td=results[inx].name
+          td &nbsp;
+          td=results[inx].role
+          td &nbsp;
+          td=results[inx].sex
+          td &nbsp;
+          td=results[inx].relationshipStatus
+          td &nbsp;
+          td=results[inx].birthyear
+  // Put a click button that lets us return to the index page 
+  form(method='get', action='/yourwork')
+      input(type='submit', value='Return')         
